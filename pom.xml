@@ -122,7 +122,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.chat.Client</mainClass>
+                            <mainClass>com.chat.client.ClientMain</mainClass>
                             <packageName>com.chat</packageName>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
