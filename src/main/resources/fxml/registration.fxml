@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chat.client.controller.RegistrationController">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #408eb8;">
+         <effect>
+            <GaussianBlur radius="63.0" />
+         </effect>
+      </Pane>
+      <Label layoutX="270.0" layoutY="100.0" text="Alehan 0.1">
+         <font>
+            <Font name="Georgia Bold" size="52.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.3089887640449438" centerY="0.6346153846153846" radius="0.5">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <TextField layoutX="10.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" style="-fx-background-radius: 12;" />
+      <TextField layoutX="10.0" layoutY="45.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" style="-fx-background-radius: 12;" />
+      <TextField layoutX="10.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="40.0" promptText="д" style="-fx-background-radius: 10;" />
+      <TextField layoutX="55.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="40.0" promptText="м" style="-fx-background-radius: 10;" />
+      <TextField layoutX="100.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="60.0" promptText="рік" style="-fx-background-radius: 12;" />
+      <TextField layoutX="10.0" layoutY="105.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" style="-fx-background-radius: 12;" />
+      <PasswordField layoutX="10.0" layoutY="135.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" style="-fx-background-radius: 12;" />
+      <PasswordField layoutX="10.0" layoutY="165.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" style="-fx-background-radius: 12;" />
+      <Button fx:id="okButton" layoutX="10.0" layoutY="320.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#saveClient" onMouseEntered="#okButtonMouseEntered" onMouseExited="#okButtonMouseExited" prefHeight="60.0" prefWidth="170.0" style="-fx-background-radius: 22;" text="Ок" textAlignment="CENTER">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <Button fx:id="exitButton" layoutX="200.0" layoutY="320.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#closeApplication" onMouseEntered="#exitButtonMouseEntered" onMouseExited="#exitButtonMouseExited" prefHeight="60.0" prefWidth="170.0" style="-fx-background-radius: 22;" text="Вихід" textAlignment="JUSTIFY">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="170.0" layoutY="50.0" text="Фамілія" textFill="WHITE" />
+      <Label layoutX="170.0" layoutY="80.0" text="Дата народження" textFill="WHITE" />
+      <Label layoutX="170.0" layoutY="110.0" text="Логін" textFill="WHITE" />
+      <Label layoutX="170.0" layoutY="140.0" text="Пароль" textFill="WHITE" />
+      <Label layoutX="170.0" layoutY="20.0" text="Ім’я" textFill="WHITE" />
+      <Label layoutX="170.0" layoutY="170.0" text="Повторити пароль" textFill="WHITE" />
+   </children>
+</AnchorPane>

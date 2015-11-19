@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chat.client.controller.LoginController">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #408eb8;">
+         <effect>
+            <GaussianBlur radius="63.0" />
+         </effect></Pane>
+      <TextField fx:id="loginField" layoutX="70.0" layoutY="100.0" promptText="Логін" />
+      <PasswordField fx:id="passwordField" layoutX="70.0" layoutY="130.0" promptText="Пароль" />
+      <Button fx:id="loginButton" layoutX="70.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#login" onMouseEntered="#loginButtonMouseEntered" onMouseExited="#loginButtonMouseExited" prefHeight="60.0" prefWidth="170.0" style="-fx-background-radius: 22;" text="Увійти" textAlignment="CENTER">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <Button fx:id="registrationButton" layoutX="70.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#registration" onMouseEntered="#registrationButtonMouseEntered" onMouseExited="#registrationButtonMouseExited" prefHeight="60.0" prefWidth="170.0" style="-fx-background-radius: 22;" text="Реєстрація" textAlignment="JUSTIFY">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="270.0" layoutY="100.0" text="Alehan 0.1">
+         <font>
+            <Font name="Georgia Bold" size="52.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.3089887640449438" centerY="0.6346153846153846" radius="0.5">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+   </children>
+</AnchorPane>

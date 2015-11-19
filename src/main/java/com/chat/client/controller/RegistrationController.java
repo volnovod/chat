@@ -1,58 +1,69 @@
 package com.chat.client.controller;
 
-import com.chat.server.model.Client;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
-import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
- * Created by victor on 16.11.15.
+ * Created by victor on 19.11.15.
  */
 public class RegistrationController {
 
-    private String login;
-    private String password;
-    private ClientSocket socket;
-
-
-    @FXML
-    private Button loginButton;
+    private Scene nextScene;
+    private Stage stage;
+    private ClientSocket clientSocket;
 
     @FXML
-    private Button registrationButton;
+    private Button okButton;
 
     @FXML
-    private TextField loginField;
+    private Button exitButton;
+
+    public ClientSocket getClientSocket() {
+        return clientSocket;
+    }
+
+    public void setClientSocket(ClientSocket clientSocket) {
+        this.clientSocket = clientSocket;
+    }
+
+    public Scene getNextScene() {
+        return nextScene;
+    }
+
+    public void setNextScene(Scene nextScene) {
+        this.nextScene = nextScene;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 
     @FXML
-    private PasswordField passwordField;
-
-    public ClientSocket getSocket() {
-        return socket;
+    public void okButtonMouseEntered(){
+        enableShadowOnButton(okButton);
     }
 
-    public void setSocket(ClientSocket socket) {
-        this.socket = socket;
+    @FXML
+    public void okButtonMouseExited(){
+        disableShadowOnButton(okButton);
     }
 
-    public void loginButtonMouseEntered(){
-        enableShadowOnButton(loginButton);
+    @FXML
+    public void exitButtonMouseEntered(){
+        enableShadowOnButton(exitButton);
     }
 
-    public void loginButtonMouseExited(){
-        disableShadowOnButton(loginButton);
-    }
-
-    public void registrationButtonMouseEntered(){
-        enableShadowOnButton(registrationButton);
-    }
-
-    public void registrationButtonMouseExited(){
-        disableShadowOnButton(registrationButton);
+    @FXML
+    public void exitButtonMouseExited(){
+        disableShadowOnButton(exitButton);
     }
 
     public void enableShadowOnButton(Button button){
@@ -63,55 +74,13 @@ public class RegistrationController {
         button.setEffect(null);
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void login(){
-        setLogin(this.loginField.getText());
-        if (loginValidator()){
-            setPassword(this.passwordField.getText());
-            this.socket.sendMessage("l");
-            this.socket.sendMessage(getLogin());
-            this.socket.sendMessage("p");
-            this.socket.sendMessage(getPassword());
-        } else {
-            System.out.println("login error");
-        }
-
-
+    @FXML
+    public void saveClient(){
 
     }
 
-    public void registration(){
-
-    }
-
-    public boolean loginValidator(){
-        String login = this.loginField.getText();
-        if(login.equals("")){
-            return false;
-        }
-        if (login.equals(" ")){
-            return false;
-        }
-        if (login.contains(" ")){
-            return false;
-        }
-        else {
-            return true;
-        }
+    public void closeApplication(){
+        Platform.exit();
+        System.exit(0);
     }
 }

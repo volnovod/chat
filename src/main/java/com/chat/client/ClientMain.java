@@ -1,6 +1,7 @@
 package com.chat.client;
 
 import com.chat.client.controller.ClientSocket;
+import com.chat.client.controller.LoginController;
 import com.chat.client.controller.RegistrationController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,15 +19,21 @@ public class ClientMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+        FXMLLoader registrationLoader = new FXMLLoader(getClass().getResource("/fxml/registration.fxml"));
 
+        Scene loginScene = new Scene(loginLoader.load());
+        Scene registrationScene = new Scene(registrationLoader.load());
 
-        Scene scene = new Scene(loader.load());
-        RegistrationController registrationController = loader.getController();
+        LoginController loginController = loginLoader.getController();
+        RegistrationController registrationController = registrationLoader.getController();
+
+        loginController.setNextScene(registrationScene);
+        loginController.setStage(primaryStage);
         ClientSocket clientSocket = new ClientSocket();
-        registrationController.setSocket(clientSocket);
+        loginController.setSocket(clientSocket);
 
-        primaryStage.setScene(scene);
+        primaryStage.setScene(loginScene);
         primaryStage.setTitle("Alehan");
         primaryStage.show();
     }
