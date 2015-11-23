@@ -12,7 +12,7 @@ public class ClientSocket {
 
     private Socket socket;
     private final int port = 61111;
-    private final String url = "192.168.1.143";
+    private final String url = "192.168.1.170";
     private PrintWriter writer;
     private Scanner reader;
 
