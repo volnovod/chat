@@ -1,14 +1,11 @@
 package com.chat.client.controller;
 
-import com.chat.server.model.Client;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -19,7 +16,9 @@ public class LoginController {
     private String login;
     private String password;
     private ClientSocket socket;
-    private Scene nextScene;
+    private Scene chatViewScene;
+    private Scene registrationScene;
+    private boolean isLogin;
     private Stage stage;
 
 
@@ -35,16 +34,26 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
+
+
     public ClientSocket getSocket() {
         return socket;
     }
 
-    public Scene getNextScene() {
-        return nextScene;
+    public Scene getRegistrationScene() {
+        return registrationScene;
     }
 
-    public void setNextScene(Scene nextScene) {
-        this.nextScene = nextScene;
+    public void setRegistrationScene(Scene registrationScene) {
+        this.registrationScene = registrationScene;
+    }
+
+    public Scene getChatViewScene() {
+        return chatViewScene;
+    }
+
+    public void setChatViewScene(Scene chatViewScene) {
+        this.chatViewScene = chatViewScene;
     }
 
     public Stage getStage() {
@@ -107,16 +116,19 @@ public class LoginController {
             this.socket.sendMessage(getLogin());
             this.socket.sendMessage("p");
             this.socket.sendMessage(getPassword());
-        } else {
-            System.out.println("login error");
+            String loginResult = this.socket.recieveMessage();
+            if (loginResult.equals("Login successful")){
+                setChatViewScene();
+            }
         }
+    }
 
-
-
+    private void setChatViewScene(){
+        getStage().setScene(getChatViewScene());
     }
 
     public void registration(){
-            stage.setScene(getNextScene());
+            stage.setScene(getChatViewScene());
     }
 
     public boolean loginValidator(){
@@ -124,9 +136,6 @@ public class LoginController {
         if(login.equals("")){
             return false;
         }
-        if (login.equals(" ")){
-            return false;
-        }
-        return login.contains(" ");
+        return !(login.contains(" "));
     }
 }

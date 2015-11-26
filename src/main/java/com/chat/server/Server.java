@@ -21,6 +21,7 @@ public class Server {
     public static void main(String[] args) {
         ServerSocket serverSocket;
         try {
+            boolean isLogin=false;
             serverSocket = new ServerSocket(61111);
             Socket socket = serverSocket.accept();
             ClientService service = new ClassPathXmlApplicationContext("transactionalContext.xml")
@@ -32,24 +33,37 @@ public class Server {
                 PrintWriter writer = new PrintWriter(outputStream, true);
                 Scanner in = new Scanner(inputStream);
 
-                writer.println("Alehan-0.1 start");
 
                 String login;
                 String password;
                 Server server = new Server();
-
-                while(in.hasNextLine()){
-                    String line = in.nextLine();
-                    if (line.equals("l") && in.hasNextLine()){
-                        login = in.nextLine();
-                    if (in.hasNextLine() && (line=in.nextLine()).equals("p")){
-                        password = in.nextLine();
-                        if (server.clientAuthentificator(login, password, service.getClientByLogin(login).get(0))){
-                            System.out.println("Login successful");
-                        } else {
-                            System.out.println("Logining error");
+                String line="";
+                if (in.hasNextLine()){
+                    line = in.nextLine();
+                    if (line.equals("logging")){
+                        while(!isLogin){
+                            line = in.nextLine();
+                            if (line.equals("l") && in.hasNextLine()){
+                                login = in.nextLine();
+                                if (in.hasNextLine() && (line=in.nextLine()).equals("p")){
+                                    password = in.nextLine();
+                                    if (service.getClientByLogin(login).size()!=0 &&
+                                            server.clientAuthentificator(login, password, service.getClientByLogin(login).get(0))){
+                                        System.out.println("Login successful");
+                                        writer.println("Login successful");
+                                        isLogin=true;
+                                    } else {
+                                        System.out.println("Login error");
+                                        writer.println("Login error");
+                                    }
+                                }
                         }
                     }
+                }
+
+                while(in.hasNextLine()){
+
+
                     }
 
                 }

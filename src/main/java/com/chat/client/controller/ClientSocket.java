@@ -12,7 +12,7 @@ public class ClientSocket {
 
     private Socket socket;
     private final int port = 61111;
-    private final String url = "192.168.1.170";
+    private final String url = "localhost";
     private PrintWriter writer;
     private Scanner reader;
 
@@ -28,5 +28,12 @@ public class ClientSocket {
 
     public void sendMessage(String message){
         this.writer.println(message);
+    }
+
+    public String recieveMessage(){
+        if (this.reader.hasNextLine()){
+            return reader.nextLine();
+        }
+        return "";
     }
 }

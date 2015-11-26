@@ -1,5 +1,6 @@
 package com.chat.client;
 
+import com.chat.client.controller.ChatViewController;
 import com.chat.client.controller.ClientSocket;
 import com.chat.client.controller.LoginController;
 import com.chat.client.controller.RegistrationController;
@@ -21,16 +22,21 @@ public class ClientMain extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
         FXMLLoader registrationLoader = new FXMLLoader(getClass().getResource("/fxml/registration.fxml"));
+        FXMLLoader chatViewLoader = new FXMLLoader(getClass().getResource("/fxml/chatView.fxml"));
 
         Scene loginScene = new Scene(loginLoader.load());
         Scene registrationScene = new Scene(registrationLoader.load());
+        Scene chatViewScene = new Scene(chatViewLoader.load());
 
         LoginController loginController = loginLoader.getController();
         RegistrationController registrationController = registrationLoader.getController();
+        ChatViewController chatViewController = chatViewLoader.getController();
 
-        loginController.setNextScene(registrationScene);
+        loginController.setChatViewScene(chatViewScene);
+        loginController.setRegistrationScene(registrationScene);
         loginController.setStage(primaryStage);
         ClientSocket clientSocket = new ClientSocket();
+        clientSocket.sendMessage("logging");
         loginController.setSocket(clientSocket);
 
         primaryStage.setScene(loginScene);
