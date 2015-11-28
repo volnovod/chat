@@ -114,11 +114,14 @@ public class RegistrationController {
         String password = passwordField.getText();
         String passwdConfirm = confirmpasswordField.getText();
         if (passwordValidator(this.passwordField.getText(), this.confirmpasswordField.getText())){
-            clientSocket.sendMessage("clientname");
+            clientSocket.sendMessage("registration");
+            System.out.println("send reg");
+            clientSocket.sendMessage("n");
             clientSocket.sendMessage(name);
-            clientSocket.sendMessage("clientsurname");
+            System.out.println("send name");
+            clientSocket.sendMessage("sn");
             clientSocket.sendMessage(surname);
-            clientSocket.sendMessage("date");
+            clientSocket.sendMessage("d");
             clientSocket.sendMessage(birthDate.toString());
         } else {
             passwordField.setStyle(passwordField.getStyle()+"-fx-background-color: red");

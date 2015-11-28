@@ -36,8 +36,8 @@ public class ClientMain extends Application {
         loginController.setRegistrationScene(registrationScene);
         loginController.setStage(primaryStage);
         ClientSocket clientSocket = new ClientSocket();
-        clientSocket.sendMessage("logging");
         loginController.setSocket(clientSocket);
+        registrationController.setClientSocket(clientSocket);
 
         primaryStage.setScene(loginScene);
         primaryStage.setTitle("Alehan");

@@ -112,6 +112,7 @@ public class LoginController {
         setLogin(this.loginField.getText());
         if (loginValidator()){
             setPassword(this.passwordField.getText());
+            this.socket.sendMessage("logging");
             this.socket.sendMessage("l");
             this.socket.sendMessage(getLogin());
             this.socket.sendMessage("p");
@@ -128,7 +129,8 @@ public class LoginController {
     }
 
     public void registration(){
-            stage.setScene(getChatViewScene());
+        getSocket().sendMessage("tr");//toRegistration message
+            stage.setScene(getRegistrationScene());
     }
 
     public boolean loginValidator(){
