@@ -7,8 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #408eb8;" fx:controller="com.chat.client.controller.ChatViewController" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #408eb8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chat.client.controller.ChatViewController">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #408eb8;">
          <effect>
@@ -25,7 +24,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <TextArea layoutX="200.0" layoutY="50.0" prefHeight="200.0" prefWidth="395.0" />
+      <TextArea fx:id="historyField" layoutX="200.0" layoutY="50.0" prefHeight="200.0" prefWidth="395.0" />
       <Label layoutX="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Alehan 0.1">
          <font>
             <Font name="Georgia Bold" size="52.0" />
@@ -39,7 +38,7 @@
             </RadialGradient>
          </textFill>
       </Label>
-      <TextArea layoutX="200.0" layoutY="260.0" prefHeight="75.0" prefWidth="395.0" promptText="Введіть текст повідомлення..." />
-      <ListView layoutX="10.0" layoutY="50.0" prefHeight="285.0" prefWidth="180.0" />
+      <TextArea fx:id="inputMessageField" layoutX="200.0" layoutY="260.0" prefHeight="75.0" prefWidth="395.0" promptText="Введіть текст повідомлення..." />
+      <ListView fx:id="friendsList" layoutX="10.0" layoutY="50.0" prefHeight="285.0" prefWidth="180.0" />
    </children>
 </AnchorPane>

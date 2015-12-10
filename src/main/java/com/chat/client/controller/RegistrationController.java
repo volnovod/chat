@@ -111,18 +111,21 @@ public class RegistrationController {
         String surname = surnameField.getText();
         Date birthDate = new Date(Integer.valueOf(yearField.getText()), Integer.valueOf(monthField.getText()),
                 Integer.valueOf(dayField.getText()));
+        String login = loginField.getText();
         String password = passwordField.getText();
         String passwdConfirm = confirmpasswordField.getText();
         if (passwordValidator(this.passwordField.getText(), this.confirmpasswordField.getText())){
             clientSocket.sendMessage("registration");
-            System.out.println("send reg");
             clientSocket.sendMessage("n");
             clientSocket.sendMessage(name);
-            System.out.println("send name");
             clientSocket.sendMessage("sn");
             clientSocket.sendMessage(surname);
             clientSocket.sendMessage("d");
             clientSocket.sendMessage(birthDate.toString());
+            clientSocket.sendMessage("l");
+            clientSocket.sendMessage(login);
+            clientSocket.sendMessage("p");
+            clientSocket.sendMessage(password);
         } else {
             passwordField.setStyle(passwordField.getStyle()+"-fx-background-color: red");
             confirmpasswordField.setStyle(confirmpasswordField.getStyle()+"-fx-background-color: red");

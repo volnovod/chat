@@ -10,6 +10,8 @@ import java.util.Date;
 @Table(name = "CLIENT")
 public class Client {
 
+    public Client(){}
+
     @Id
     @SequenceGenerator(name = "sequence", sequenceName = "CLIENT_SEQ", allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
@@ -86,8 +88,8 @@ public class Client {
         return path;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setPath() {
+        this.path = "/"+getId();
     }
 
     @Override

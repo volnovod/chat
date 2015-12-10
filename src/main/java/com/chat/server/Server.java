@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -65,7 +66,8 @@ public class Server {
                             }
                         }
                         if (line.equals("registration")){
-                            server.createClient(in);
+                            Client client = server.createClient(in);
+                            service.createClient(client);
                         }
 
                     }
@@ -85,11 +87,14 @@ public class Server {
 
     }
 
-    public boolean createClient(Scanner in){
+    public Client createClient(Scanner in){
         String name;
         String surname;
         String date;
         String line;
+        String login;
+        String password;
+        Client newClient = new Client();
             while (true){
                 line = in.nextLine();
                 if (line.equals("n") && in.hasNextLine()){
@@ -98,11 +103,25 @@ public class Server {
                         surname = in.nextLine();
                         if (in.hasNextLine() && (line=in.nextLine()).equals("d")){
                             date = in.nextLine();
+                            if (in.hasNextLine() && (line=in.nextLine()).equals("l")){
+                                login=in.nextLine();
+                                if (in.hasNextLine() && (line=in.nextLine()).equals("p")){
+                                    password=in.nextLine();
+                                    System.out.println("Name-"+name);
+                                    System.out.println("Surname-"+surname);
+                                    System.out.println("Date-"+date);
+                                    System.out.println("Pass-"+password);
+                                    newClient.setName(name);
+                                    newClient.setSecondName(surname);
+                                    newClient.setLogin(login);
+                                    newClient.setBirthDate(new Date(11,11,1994));
+                                    newClient.setPassword(password);
+                                    newClient.setPath();
 
-                            System.out.println("Name-"+name);
-                            System.out.println("Surname-"+surname);
-                            System.out.println("Date-"+date);
-                            return true;
+                                }
+                            }
+
+                            return newClient;
                         }
                     }
                 }
